@@ -1,20 +1,31 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 # Create your models here.
 
 class Customer(models.Model):
 	user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
 	name = models.CharField(max_length=200, null=True)
+	number_phone =models.CharField(max_length=17)
 	email = models.CharField(max_length=200)
 
 	def __str__(self):
 		return self.name
+@ receiver(post_save,sender=User)
+def create_user_customer(sender, instance,created,**kwargs):
+	if created:
+		Customer.objects.create(
+			user = instance
+		)
+
 
 
 class Product(models.Model):
 	name = models.CharField(max_length=200)
 	price = models.FloatField()
+	active = models.BooleanField(default=True)
+	stock = models.CharField(max_length=6, null=True, blank=True)
 	digital = models.BooleanField(default=False,null=True, blank=True)
 	image = models.ImageField(null=True, blank=True)
 
