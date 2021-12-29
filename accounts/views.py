@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Profile
-from .forms import SignUpForm, User_Form, ProfileForm
+from .forms import SignUpForm, UserForm, ProfileForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 
@@ -32,7 +32,7 @@ def profile_edit(request):
     profile = Profile.objects.get(user =request.user)
 
     if request.method =='POST':
-        userform = User_Form(request.POST, instance=request.user)
+        userform = UserForm(request.POST, instance=request.user)
         profileform = ProfileForm(request.POST, instance=profile)
 
         if userform.is_valid() and profileform.is_valid():
