@@ -1,6 +1,7 @@
 from django.urls import path
 
 from . import views
+app_nme= "store"
 
 urlpatterns = [
 	#Leave as empty string for base url
