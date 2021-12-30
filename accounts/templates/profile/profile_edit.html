@@ -8,8 +8,8 @@
 <h1>profile edit</h1>
 <form action="", method="post">
     {% csrf_token%}
-    {{ userform}}
-    {{ profileform}}
+    {{ UserForm}}
+    {{ profileForm}}
     <input type="submit", value="edit profile">
 </form>
 </body>

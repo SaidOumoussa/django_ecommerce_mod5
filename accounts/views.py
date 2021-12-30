@@ -30,20 +30,20 @@ def sign_up(request):
 
 def profile_edit(request):
     profile = Profile.objects.get(user =request.user)
-
     if request.method =='POST':
         userform = UserForm(request.POST, instance=request.user)
         profileform = ProfileForm(request.POST, instance=profile)
-
         if userform.is_valid() and profileform.is_valid():
             userform.save()
             myform =profileform.save(commit=False)
             myform.user = request.user
             myform.save()
-            return redirect(('accounts/profile/'))
+
+            return redirect(('/accounts/profile'))
+
     else:
-        userform = User_Form(instance=User)
+        userform = UserForm(instance=User)
         profileform =ProfileForm(instance=profile)
 
-    return render(request, 'profile/profile_edit.html', {'userform':userform},{'profileform':profileform})
+    return render(request, 'profile/profile_edit', {'userform':userform},{'profileform':profileform})
 
