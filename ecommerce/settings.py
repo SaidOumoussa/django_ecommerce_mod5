@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-
+import mysql.connector
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,7 +25,7 @@ SECRET_KEY = 'z+ksf@)0d^qojbh4rnp4b1to$hq&*tt(3bs$gf(3i267g$k9ln'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['143.198.21.207']
 
 
 # Application definition
@@ -77,6 +77,16 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+
+lmiibot_db = mysql.connector.connect(
+    host="kongodwa.com",
+    user="doadmin",
+    port = 25060,
+    passwd="password",
+    database="defaultdb",
+    sslmode = REQUIRED,
+    auth_plugin="mysql_native_password",
+)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
