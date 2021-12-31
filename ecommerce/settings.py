@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'store.apps.StoreConfig',
+    'django_social_share',
 ]
 
 MIDDLEWARE = [
@@ -127,5 +128,7 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_URL = '/images/'
+LOGIN_REDIRECT_URL = '/'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Profile
+from django.contrib.auth.decorators import login_required
 from .forms import  SignUpForm, Profile_Form
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
